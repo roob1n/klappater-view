@@ -1,0 +1,31 @@
+.btn {
+	@extend .form-ctrl;
+	color: white;
+	background: $background-fallback;
+	background: $gradient;
+	padding: 0.3em 1em;
+	font-weight: 700;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.form-ipt {
+	padding: 0.3em 0.7em;
+	width: calc(100% - 105px);
+}
+
+.form-btn {
+	@extend .btn;
+	width: 100px;
+}
+
+.form-ctrl {
+	outline: none;
+	border: none;
+	font-family: $font-quicksand;
+	line-height: 20px;
+	font-size: 0.9rem;
+	border-radius: 1em;
+	box-sizing: border-box;
+	margin: 0;
+}

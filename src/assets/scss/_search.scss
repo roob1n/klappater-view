@@ -1,0 +1,94 @@
+.search-form {
+}
+
+.search-results {
+	margin: 0;
+	padding: 0;
+
+	&__title {
+		margin: 1em 0 0;
+		font-size: 1em;
+		font-family: $font-quicksand;
+		font-weight: 400;
+		text-transform: uppercase;
+		text-align: center;
+		color: $background-fallback;
+	}
+
+	&__footer {
+		width: 100%;
+		margin-top: 1em;
+		text-align: center;
+	}
+}
+
+.search-result {
+	list-style: none;
+	padding: 0.5em 0;
+
+	& + & {
+		border-top: 1px solid #777;
+	}
+}
+
+.song {
+
+	&__cover {
+		display: block;
+		float: left;
+		margin-right: 10px;
+		max-width: 64px;
+	}
+
+	&__info {
+		float: left;
+		overflow: hidden;
+		max-width: calc(100% - 74px - 37px);
+	}
+
+	&__title {
+		//display: block;
+	}
+
+	&__artist {
+		display: block;
+		font-weight: 300;
+		font-size: 0.85em;
+		color: #ccc;
+	}
+
+	&__action-btn {
+		margin: 0;
+		margin-left: 5px;
+		padding: 0;
+		float: right;
+		border: 0;
+		background: none;
+		outline: none;
+		cursor: pointer;
+		color: #999;
+
+		.fa {
+			font-size: 32px;
+		}
+
+		.fa-check {
+			color: $brand-primary;
+		}
+
+		span {
+			display: block;
+		}
+
+		&.active {
+			color: $brand-primary;
+		}
+	}
+
+	&::after {
+		content: "";
+		clear: both;
+		display: block;
+	}
+
+}

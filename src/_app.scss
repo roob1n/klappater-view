@@ -1,0 +1,14 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: #1c1c1c;
+	color: white;
+	font-family: $font-quicksand;
+}
+
+.app-body {
+	padding: $app-body-padding;
+	padding-top: $app-body-padding + 78px;
+}

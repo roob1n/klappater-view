@@ -1,0 +1,29 @@
+.charts-list {
+	margin: 0;
+	padding: 0;
+
+	&__title {
+		margin: 1em 0 0;
+		font-size: 1em;
+		font-family: $font-quicksand;
+		font-weight: 400;
+		text-transform: uppercase;
+		text-align: center;
+		color: $background-fallback;
+	}
+
+	&__footer {
+		width: 100%;
+		margin-top: 1em;
+		text-align: center;
+	}
+}
+
+.charts-entry {
+	list-style: none;
+	padding: 0.5em 0;
+
+	& + & {
+		border-top: 1px solid #777;
+	}
+}
