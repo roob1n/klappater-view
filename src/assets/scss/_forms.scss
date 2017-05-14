@@ -1,25 +1,4 @@
-.btn {
-	@extend .form-ctrl;
-	color: white;
-	background: $background-fallback;
-	background: $gradient;
-	padding: 0.3em 1em;
-	font-weight: 700;
-	text-transform: uppercase;
-	cursor: pointer;
-}
-
-.form-ipt {
-	padding: 0.3em 0.7em;
-	width: calc(100% - 105px);
-}
-
-.form-btn {
-	@extend .btn;
-	width: 100px;
-}
-
-.form-ctrl {
+.form-ele {
 	outline: none;
 	border: none;
 	font-family: $font-quicksand;
@@ -28,4 +7,47 @@
 	border-radius: 1em;
 	box-sizing: border-box;
 	margin: 0;
+}
+
+.btn {
+	@extend .form-ele;
+	color: white;
+	background: $background-fallback;
+	background: $gradient;
+	padding: 0.3em 1em;
+	font-weight: 700;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: .3s ease;
+
+	&:disabled {
+		background: $disabled-fallback;
+		background: $disabled-gradient;
+		cursor: default;
+		transition: .3s ease;
+	}
+
+	&--big {
+		display: inline-block;
+		font-size: 1.5rem;
+	}
+}
+
+.ipt {
+	@extend .form-ele;
+	padding: 0.3em 0.7em;
+
+	&--big {
+		font-size: 1.5rem;
+	}
+}
+
+.form-ipt {
+	@extend .ipt;
+	width: calc(100% - 105px);
+}
+
+.form-btn {
+	@extend .btn;
+	width: 100px;
 }

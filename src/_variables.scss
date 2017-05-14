@@ -11,4 +11,7 @@ $app-body-padding: 10px;
 $brand-primary: #fb673c;
 
 $background-fallback: #f8c942;
-$gradient: linear-gradient(190deg, #f8c942 0%,#e54040 100%); 
+$gradient: linear-gradient(190deg, #f8c942, #e54040); 
+
+$disabled-fallback: #555;
+$disabled-gradient: linear-gradient(190deg, #ccc, #555); 

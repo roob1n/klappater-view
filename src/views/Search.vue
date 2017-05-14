@@ -1,35 +1,53 @@
 <template>
+
   <main class="app-body">
+
+    <app-header></app-header>
+
     <form @submit.prevent="onSubmit" class="search-form">
-      <input type="text" name="search_query" placeholder="Suchen..." class="form-ctrl form-ipt" v-model="search_query" />
-      <button type="submit" name="submit" class="form-ctrl form-btn">Suchen</button>
+      <input type="text" name="search_query" placeholder="Suchen..." class="form-ipt" v-model="search_query" autofocus />
+      <button type="submit" name="submit" class="form-btn">Suchen</button>
     </form>
 
     <ul class="search-results" id="search-results"  v-if="results.length > 0">
       <h2 class="search-results__title">Resultate</h2>
+      
       <li class="search-result song" v-for="item in results">
+        
         <img class="song__cover" :src="item.album.images[2].url" />
+
         <div class="song__info">
           <span class="song__title">{{ item.name }}</span>
-          <span class="song__artist">{{ item.artists[0].name }}</span>
+          <span class="song__artist">{{ item.artists.map(function(artist) { return artist.name }).join(", ") }}</span>
           </div>
-        <button @click="suggestSong" class="song__action-btn">
+
+        <button @click="suggestSong(item, $event)" class="song__action-btn">
           <i class="fa fa-plus-circle"></i>
         </button>
+
       </li>
+
       <footer v-if="results.length >= (limit + offset)" class="search-results__footer">
         <button class="btn"  @click="showMoreResults">Mehr Anzeigen</button>
       </footer>
+
     </ul>
+
   </main>
+
 </template>
 
 <script>
+  import * as AppHeader from '../components/Header'
   import * as conf from '../conf.json'
   import axios from 'axios'
+  import storage from './../storage'
 
   export default {
     name: 'search',
+    components: {
+      'app-header': AppHeader,
+    },
     data() {
       return {
         search_query : '',
@@ -54,10 +72,13 @@
         axios.get('https://api.spotify.com/v1/search?q='+this.query+'&type=track&limit='+this.limit+'&offset='+this.offset)
         .then(response => this.results = this.results.concat(response.data.tracks.items));
       },
-      suggestSong(event) {
+      suggestSong(song, event) {
         if(event.target.className == "fa fa-plus-circle") {
           event.target.className = "fa fa-check";
         }
+
+        storage.addSuggestion(song);
+
       }
     }
   };

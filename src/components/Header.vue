@@ -1,7 +1,13 @@
 <template>
 	<header class="header">
 		<div class="status-bar">
-			{{ headerTitle }}
+			<span class="status-bar__title">
+				{{ headerTitle }}
+			</span>
+			<span class="status-bar__credits">
+				<i class="fa fa-volume-up"></i> 
+				{{ credits }}
+			</span>
 		</div>
 		<nav class="menu">
 			<router-link to="/profile" class="menu__entry" exact>
@@ -21,11 +27,12 @@
 </template>
 
 <script>
-	export default{
+	export default {
+		props: ['credits'],
 		data () {
 			return {
 				headerTitle: "Menu",
 			}
-		}
+		},
 	}
 </script>

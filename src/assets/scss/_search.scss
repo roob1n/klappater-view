@@ -47,7 +47,7 @@
 	}
 
 	&__title {
-		//display: block;
+		display: block;
 	}
 
 	&__artist {
@@ -55,6 +55,12 @@
 		font-weight: 300;
 		font-size: 0.85em;
 		color: #ccc;
+	}
+
+	&__suggestor {
+		display: block;
+		font-size: 0.85em;
+		color: $brand-primary;
 	}
 
 	&__action-btn {

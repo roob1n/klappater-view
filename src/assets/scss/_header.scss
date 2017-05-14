@@ -1,6 +1,7 @@
 .header {
 	position: fixed;
 	top: 0;
+	left: 0;
 	width: 100%;
 	background: $background-fallback; 
 	background: $gradient;
@@ -11,8 +12,19 @@
 	display: block;
 	padding: 0.3em 0;
 	text-align: center;
-	text-transform: uppercase;
-	font-family: $font-bungee;
+
+
+	&__title {
+		text-transform: uppercase;
+		font-family: $font-bungee;
+		text-align: center;
+	}
+
+	&__credits {
+		position: absolute;
+		right: 0.3em;
+		font-family: $font-bungee;
+	}
 }
 
 .menu {

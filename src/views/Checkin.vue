@@ -1,32 +1,39 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-  </div>
+
+  <main class="app-body checkin-view">
+
+    <h1>Check In</h1>
+
+    <form @submit.prevent="onSubmit" accept-charset="utf-8">
+      <label for="activation_code" class="lbl">
+        Gib deinen Code hier ein:
+      </label>
+
+      <input type="text" name="activation_code" placeholder="" class="ipt ipt--big" maxlength="8" autocomplete="off" v-model="activation_code" />
+
+      <button type="submit" :disabled="activation_code.length < 8" name="submit" class="btn btn--big">Einchecken</button>
+
+    </form>
+
+  </main>
+
 </template>
 
 <script>
-export default {
-  name: 'hello',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-    };
-  },
-};
+  import auth from './../auth'
+  import storage from './../storage'
+
+  export default {
+    name: 'check-in',
+    data() {
+      return {
+        activation_code: ''
+      }
+    },
+    methods: {
+      onSubmit() {
+          auth.register(this.activation_code)
+      },
+    }
+  }
 </script>

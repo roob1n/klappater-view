@@ -1,0 +1,11 @@
+.btn--logout {
+	@extend .btn;
+	width: 100%;
+	background: linear-gradient(190deg, #f66, #500); 
+}
+
+.btn--facebook {
+	@extend .btn;
+	width: 100%;
+	background: linear-gradient(190deg, #66f, #005); 
+}

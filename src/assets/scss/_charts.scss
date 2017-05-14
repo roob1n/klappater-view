@@ -26,4 +26,8 @@
 	& + & {
 		border-top: 1px solid #777;
 	}
+
+	.song__info {
+		max-width: calc(100% - 37px);
+	}
 }

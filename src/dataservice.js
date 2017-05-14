@@ -1,45 +1,43 @@
 import axios from 'axios'
-import * as conf from 'conf.json'
+import * as conf from './conf.json'
 
 class DataService {
 
   constructor () {
-    this.instance = axios.create({
+    this.api = axios.create({
       baseURL: conf.apiurl,
-      timeout: 30000
+      timeout: 30000,
+    })
+    this.spotify = axios.create({
+    	baseURL: conf.spotifyurl,
+    	timeout: 30000,
     })
   }
 
-  getAllPlayers () {
-    return this.instance.get('/player')
+  register (code) {
+    return this.api.post('/register/'+code)
   }
 
-  getGames (page, limit) {
-    return this.instance.get('/game?page=' + page + '&limit=' + limit)
+  getProfile(headers) {
+  	console.log(headers)
+  	return this.api.get('/profile', headers)
   }
 
-  getTopGames () {
-    return this.instance.get('/games/top3')
+  addSong(data, headers) {
+  	return this.api.post('/songs/', data, headers)
   }
 
-  getMostGames () {
-    return this.instance.get('/games/frequent3')
+  addSuggestion(songId, headers) {
+  	return this.api.post('/suggestions/'+songId, headers)
   }
 
-  makeGame (playerOneId, playerTwoId, winner, playerOneGoals, playerTwoGoals) {
-    return this.instance.post('/game', {
-      player_one_id: playerOneId,
-      player_two_id: playerTwoId,
-      winner: winner,
-      player_one_goals: playerOneGoals,
-      player_two_goals: playerTwoGoals
-    })
-  }
+  getSuggestions(headers) {
+  	return this.api.get('/suggestions/', headers)
+  } 
 
-  destroyGame (gameId) {
-    return this.instance.delete('/game/' + gameId)
+  voteSuggestion(suggestionId, headers) {
+  	return this.api.post('/votes/'+suggestionId, headers)
   }
-
 }
 
 export default DataService
