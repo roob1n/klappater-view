@@ -77,8 +77,12 @@
           event.target.className = "fa fa-check";
         }
 
-        storage.addSuggestion(song);
+        if(storage.state.profile.credits <= 0) {
+          console.log("Not enough credits!")
+          return false
+        }
 
+        storage.dispatch('addSuggestion', song);
       }
     }
   };

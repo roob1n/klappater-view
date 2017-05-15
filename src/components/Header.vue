@@ -1,10 +1,8 @@
 <template>
 	<header class="header">
 		<div class="status-bar">
-			<span class="status-bar__title">
-				{{ headerTitle }}
-			</span>
 			<span class="status-bar__credits">
+				<span class="status-bar__info">Credits:&nbsp;</span>
 				<i class="fa fa-volume-up"></i> 
 				{{ credits }}
 			</span>
@@ -27,12 +25,14 @@
 </template>
 
 <script>
+	import storage from '@/storage'
+
 	export default {
-		props: ['credits'],
-		data () {
-			return {
-				headerTitle: "Menu",
+		name: 'app-header',
+		computed: {
+			credits() {
+				return storage.state.profile.credits
 			}
-		},
+		}
 	}
 </script>

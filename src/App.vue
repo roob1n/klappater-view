@@ -5,13 +5,8 @@
 </template>
 
 <script>
-	import * as AppHeader from './components/Header'
-
 	export default {
-		name: 'app',
-		components: {
-			'app-header': AppHeader,
-		}
+		name: 'app'
 	};
 </script>
 

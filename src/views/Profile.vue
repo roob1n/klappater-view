@@ -2,11 +2,11 @@
 
     <main class="app-body">
 
-      <app-header :credits="user.credits"></app-header>
+      <app-header></app-header>
       
-      <h1>Profile</h1>
-      <p>Vorname: {{ user.first_name }}</p>
-      <p>Nachname: {{ user.last_name }}</p>
+      <h2>Profile</h2>
+      <p v-show="user.first_name">Vorname: {{ user.first_name }}</p>
+      <p v-show="user.last_name">Nachname: {{ user.last_name }}</p>
       <p>Spitzname: {{ user.nick_name }}</p>
 
       <button type="button" class="btn btn--facebook">
@@ -32,18 +32,18 @@
     components: {
       'app-header': AppHeader,
     },
-    data() {
-      return {
-        user: storage.getProfile()
+    computed: {
+      user() {
+        return storage.state.profile
       }
     },
-    beforeCreate() {
-      storage.updateProfile()
+    created() {
+      storage.dispatch('updateProfile')
     },
     methods: {
       logout() {
           auth.logout()
       },
     }
-  };
+  }
 </script>

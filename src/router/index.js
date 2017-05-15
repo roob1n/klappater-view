@@ -5,6 +5,7 @@ import Search from '@/views/Search';
 import Charts from '@/views/Charts';
 import Profile from '@/views/Profile';
 
+
 Vue.use(Router);
 
 export default new Router({
@@ -32,5 +33,4 @@ export default new Router({
 		component: Search,
 	},
 	],
-
 });

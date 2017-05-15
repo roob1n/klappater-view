@@ -24,19 +24,23 @@ class DataService {
   }
 
   addSong(data, headers) {
+	console.log(headers)
   	return this.api.post('/songs/', data, headers)
   }
 
   addSuggestion(songId, headers) {
-  	return this.api.post('/suggestions/'+songId, headers)
+  	console.log(headers)
+  	return this.api.post('/suggestions/'+songId, null, headers)
   }
 
   getSuggestions(headers) {
+  	console.log(headers)
   	return this.api.get('/suggestions/', headers)
   } 
 
   voteSuggestion(suggestionId, headers) {
-  	return this.api.post('/votes/'+suggestionId, headers)
+  	console.log(headers)
+  	return this.api.post('/votes/'+suggestionId, null, headers)
   }
 }
 

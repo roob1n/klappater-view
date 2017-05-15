@@ -13,7 +13,7 @@
           <span class="song__artist">{{ item.song.artist }}</span>
           <span class="song__suggestor">vorgeschlagen von {{ item.suggestor }}</span>
         </div>
-        <button class="song__action-btn" @click="vote(item.id)">
+        <button class="song__action-btn" :class="(item.has_user_vote) ? 'active' : ''" @click="vote(item.id)">
           <i class="fa fa-volume-up"></i>
           <span>{{ item.votes }}</span>
         </button>
@@ -25,7 +25,7 @@
 </template>
 
 <script>  
-  import * as AppHeader from '../components/Header'
+  import * as AppHeader from '@/components/Header'
   import storage from './../storage'
 
   export default {
@@ -33,50 +33,18 @@
     components: {
       'app-header': AppHeader,
     },
-    data() {
-      return {
-        charts: [{
-          id: 1,
-          song: {
-            title: 'Sabotage', 
-            artist: 'Beasty Boys'
-          },
-          votes: 194,
-          suggestor: 'Salamander92'
-        }, 
-        {
-          id: 2,
-          song: {
-            title: 'Reset After All', 
-            artist: 'Shaka Poink'
-          },
-          votes: 15,
-          suggestor: 'Texas95'
-        },
-        {
-          id: 3,
-          song: {
-            title: 'Wahre Werte', 
-            artist: 'Frei.Wild'
-          },
-          votes: 2,
-          suggestor: 'Hdnw1888'
-        },
-        {
-          id: 4,
-          song: {
-            title: 'Miles Away (Johnny Vicious Club Mix)', 
-            artist: 'Madonna'
-          },
-          votes: 123,
-          suggestor: 'Fäbschter88'
-        }],
-      };
+    computed: {
+      charts() {
+        return storage.state.suggestions
+      }
+    },
+    beforeCreate() {
+        storage.dispatch('updateSuggestions')
     },
     methods: {
       vote(suggestionId) {
-        storage.toggleVote(suggestionId)
+        storage.dispatch('toggleVote', suggestionId)
       }
     }
-  };
+  }
 </script>

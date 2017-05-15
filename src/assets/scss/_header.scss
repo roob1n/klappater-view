@@ -10,9 +10,15 @@
 .status-bar {
 	width: 100%;
 	display: block;
-	padding: 0.3em 0;
+	padding: 0.2em 0 1em;
 	text-align: center;
 
+	&__info {
+		font-family: $font-quicksand;
+		text-transform: uppercase;
+		font-weight: 300;
+		font-size: 0.7em;
+	}
 
 	&__title {
 		text-transform: uppercase;
