@@ -2,8 +2,6 @@
 
   <main class="app-body">
 
-    <app-header></app-header>
-
     <h2>Charts</h2>
     
     <ul class="charts-list" v-if="charts.length > 0">
@@ -30,9 +28,7 @@
 
   export default {
     name: 'charts',
-    components: {
-      'app-header': AppHeader,
-    },
+
     computed: {
       charts() {
         return storage.state.suggestions

@@ -2,8 +2,6 @@
 
   <main class="app-body">
 
-    <app-header></app-header>
-
     <form @submit.prevent="onSubmit" class="search-form">
       <input type="text" name="search_query" placeholder="Suchen..." class="form-ipt" v-model="search_query" autofocus />
       <button type="submit" name="submit" class="form-btn">Suchen</button>
@@ -38,16 +36,12 @@
 </template>
 
 <script>
-  import * as AppHeader from '../components/Header'
   import * as conf from '../conf.json'
   import axios from 'axios'
   import storage from './../storage'
 
   export default {
     name: 'search',
-    components: {
-      'app-header': AppHeader,
-    },
     data() {
       return {
         search_query : '',

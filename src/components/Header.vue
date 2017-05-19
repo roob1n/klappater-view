@@ -1,5 +1,5 @@
 <template>
-	<header class="header">
+	<header class="header" v-show="!($route.path==='/' )">
 		<div class="status-bar">
 			<span class="status-bar__credits">
 				<span class="status-bar__info">Credits:&nbsp;</span>

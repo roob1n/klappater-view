@@ -23,15 +23,11 @@
 </template>
 
 <script>
-  import * as AppHeader from '../components/Header'
   import storage from './../storage'
   import auth from './../auth'
 
   export default {
     name: 'profile',
-    components: {
-      'app-header': AppHeader,
-    },
     computed: {
       user() {
         return storage.state.profile
