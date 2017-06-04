@@ -63,7 +63,7 @@
       },
       showMoreResults() {
         this.offset += 10;
-        axios.get('https://api.spotify.com/v1/search?q='+this.query+'&type=track&limit='+this.limit+'&offset='+this.offset)
+        axios.get('https://api.spotify.com/v1/search?q='+this.query+'&type=track&limit='+this.limit+'&offset='+this.offset+'market=CH')
         .then(response => this.results = this.results.concat(response.data.tracks.items));
       },
       suggestSong(song, event) {

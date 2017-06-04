@@ -2,6 +2,8 @@
 
   <main class="app-body checkin-view">
 
+    <img class="checkin-view__logo" src="../assets/logo.png" />
+
     <h1>Check In</h1>
 
     <form @submit.prevent="onSubmit" accept-charset="utf-8">
@@ -32,7 +34,7 @@
     },
     methods: {
       onSubmit() {
-          auth.register(this.activation_code)
+        auth.register(this.activation_code)
       },
     }
   }

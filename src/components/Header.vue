@@ -2,7 +2,7 @@
 	<header class="header" v-show="!($route.path==='/' )">
 		<div class="status-bar">
 			<span class="status-bar__credits">
-				<span class="status-bar__info">Credits:&nbsp;</span>
+				<span class="status-bar__info">credits&nbsp;</span>
 				<i class="fa fa-volume-up"></i> 
 				{{ credits }}
 			</span>
