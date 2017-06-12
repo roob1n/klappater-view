@@ -39,6 +39,7 @@
   import * as conf from '../conf.json'
   import axios from 'axios'
   import storage from './../storage'
+  import auth from '@/auth'
 
   export default {
     name: 'search',
@@ -55,15 +56,16 @@
       onSubmit() {
         this.offset = 0;
         if(this.search_query.length > 0) {
+          console.log(auth.getSpotifyHeader());
           this.query = this.search_query.replace(' ', '+');
-          axios.get('https://api.spotify.com/v1/search?q='+this.query+'&type=track&limit='+this.limit+'&offset='+this.offset)
+          axios.get('https://api.spotify.com/v1/search?q='+this.query+'&type=track&limit='+this.limit+'&offset='+this.offset+'&market=CH', { headers: auth.getSpotifyHeader() })
           .then(response => this.results = response.data.tracks.items);
           //.then(response => console.log(response));
         }
       },
       showMoreResults() {
         this.offset += 10;
-        axios.get('https://api.spotify.com/v1/search?q='+this.query+'&type=track&limit='+this.limit+'&offset='+this.offset+'market=CH')
+        axios.get('https://api.spotify.com/v1/search?q='+this.query+'&type=track&limit='+this.limit+'&offset='+this.offset+'&market=CH', { headers: auth.getSpotifyHeader() })
         .then(response => this.results = this.results.concat(response.data.tracks.items));
       },
       suggestSong(song, event) {

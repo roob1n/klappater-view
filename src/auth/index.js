@@ -16,6 +16,7 @@ export default {
 		dataservice.register(code)
 		.then((response) => {
 			store.set('user_token', response.data.token)
+			store.set('spotify_token', response.data.data.spotify_token)
 			this.user.authenticated = true
 			storage.profile = response.data.data
 			router.replace('/profile')
@@ -42,6 +43,12 @@ export default {
 	getAuthHeader() {
 		return {
 			'Authorization': 'Bearer ' + store.get('user_token')
+		}
+	},
+
+	getSpotifyHeader() {
+		return {
+			'Authorization': 'Bearer ' + store.get('spotify_token')
 		}
 	}
 }
