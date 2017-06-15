@@ -10,7 +10,7 @@
 .status-bar {
 	width: 100%;
 	display: block;
-	padding: 0.2em 0 1em;
+	padding: 0.2em 0 1.2em;
 	text-align: center;
 
 	&__info {
@@ -29,6 +29,12 @@
 	&__credits {
 		position: absolute;
 		right: 0.3em;
+		font-family: $font-bungee;
+	}
+
+	&__location {
+		position: absolute;
+		left: 0.3em;
 		font-family: $font-bungee;
 	}
 }

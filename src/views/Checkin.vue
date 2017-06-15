@@ -32,10 +32,27 @@
         activation_code: ''
       }
     },
+    mounted() {
+      this.activation_code = this.getQueryVariable("c");
+      if(! this.activation_code) {
+        this.activation_code = "";
+      }
+    },
     methods: {
       onSubmit() {
         auth.register(this.activation_code)
       },
+      getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){
+              return pair[1];
+            }
+        }
+        return(false);
+      }
     }
   }
 </script>

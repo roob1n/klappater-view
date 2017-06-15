@@ -1,13 +1,36 @@
 .btn--logout {
 	@extend .btn;
 	width: 100%;
-	background: linear-gradient(190deg, #f66, #500); 
-	margin-top: 1em;
+	margin-top: 2em;
 }
 
 .btn--facebook {
 	@extend .btn;
 	width: 100%;
-	background: linear-gradient(190deg, #66f, #005); 
+	background: #3b5998;
 	margin-top: 1em;
+}
+
+.ipt--change {
+	line-height: 1;
+}
+
+.btn--change {
+	@extend .btn;
+	float: right;
+	font-size: 0.7em;
+	padding: 0.1em 0.7em;
+}
+
+.btn--email {
+	@extend .btn;
+	width: 100%;
+	background: #593b98;
+	margin-top: 2em;
+}
+
+.ipt--email {
+	width: 100%;
+	margin-top: 0.2em;
+	text-align: center;
 }

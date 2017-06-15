@@ -40,6 +40,10 @@ export default {
 		}
 	},
 
+	setSpotifyToken(token) {
+		store.set('spotify_token', token)
+	},
+
 	getAuthHeader() {
 		return {
 			'Authorization': 'Bearer ' + store.get('user_token')

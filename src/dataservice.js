@@ -19,27 +19,38 @@ class DataService {
   }
 
   getProfile(headers) {
-  	console.log(headers)
   	return this.api.get('/profile', headers)
   }
 
+  getLocation(headers) {
+    return this.api.get('/location', headers)
+  }
+
+  addName(data, headers) {
+    return this.api.post('/profile/name', data, headers)
+  }
+
+  addEmail(data, headers) {
+    return this.api.post('/profile/email', data, headers)
+  }
+
+  changeNickname(data, headers) {
+    return this.api.put('/profile/nickname', data, headers)
+  }
+
   addSong(data, headers) {
-	console.log(headers)
-  	return this.api.post('/songs/', data, headers)
+  	return this.api.post('/songs', data, headers)
   }
 
   addSuggestion(songId, headers) {
-  	console.log(headers)
   	return this.api.post('/suggestions/'+songId, null, headers)
   }
 
   getSuggestions(headers) {
-  	console.log(headers)
-  	return this.api.get('/suggestions/', headers)
+  	return this.api.get('/suggestions', headers)
   } 
 
   voteSuggestion(suggestionId, headers) {
-  	console.log(headers)
   	return this.api.post('/votes/'+suggestionId, null, headers)
   }
 }

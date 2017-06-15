@@ -34,12 +34,17 @@
         return storage.state.suggestions
       }
     },
-    beforeCreate() {
-        storage.dispatch('updateSuggestions')
+    created() {
+      setInterval(() => {
+        this.updateCharts()
+      }, 20000)
     },
     methods: {
       vote(suggestionId) {
         storage.dispatch('toggleVote', suggestionId)
+      },
+      updateCharts() {
+        storage.dispatch('updateSuggestions')
       }
     }
   }
